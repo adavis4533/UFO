@@ -35,8 +35,8 @@ myMap.addLayer(markers);
 //load data
 
 
-d3.json("ufodata.json", function(ufoData) {
-  if (error) return console.warn(error);
+d3.json("data.json", function(ufoData) {
+  
     console.log(ufoData);
 
     // log a list of names
