@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
-
+<!-- head -->
 <head>
   <meta charset="utf-8">
-  <title>UFO Finder</title>
+  <title>UFO Sightings Data</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
-
+<!-- body -->
 <body>
   <div class="wrapper">
+    <!-- navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -21,69 +22,369 @@
         </div>
       </div>
     </nav>
+    <!-- page title -->
     <div class="hero text-center">
-      <h1>UFO Sightings</h1>
-      <p>The Truth is Out There</p>
+      <h1>UFO Sightings Data</h1>
     </div>
     <div class="container">
-      <div class="row margin-top-50">
-        <div class="col-md-2">
-          <aside class="filters">
-            <div class="panel panel-default">
-              <div class="panel-heading">Filter Search</div>
-              <div class="panel-body">
-                <form>
-                  <div class="form-group">
-                    <ul class="list-group" id="filters">
-                      <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011" onkeyup="myFunction()">
-                        <label for="city">Enter a City</label>
-                        <input class="form-control" id="city" type="text" placeholder="Bakersfield" onkeyup="myFunction1()">
-                        <label for="state">Enter a State</label>
-                        <input class="form-control" id="state" type="text" placeholder="CA" onkeyup="myFunction2()">
-                        <label for="country">Enter a Country</label>
-                        <input class="form-control" id="country type="text" placeholder="US" onkeyup="myFunction3()">
-                        <label for="shape">Enter a Shape</label>
-                        <input class="form-control" id="shape" type="text" placeholder="light" onkeyup="myFunction4()">
-                        <label for="duration">Enter a Duration</label>
-                        <input class="form-control" id="duration" type="text" placeholder="1 min" onkeyup="myFunction5()">
-                      </li>
-                    </ul>
-                  </div>
-                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                </form>
-              </div>
-            </div>
-          </aside>
-        </div>
+      <div class="row">
+        <!-- data blurb -->
         <div class="col-md-10">
-          <div id="table-area" class="">
-            <table id="ufo-table" class="table table-striped">
+          <h3>
+            Our Data
+          </h3>
+          <p>
+            The data we selected cam from <a href="https://www.kaggle.com/NUFORC/ufo-sightings">Kaggle.com</a>. It was available in several different formats, namely
+            CSV as well as JSON. The data was extensive, as it contained records from 1969 to present. 
+            As a result the files were large, so we opted to use the available API in order to streamline the retrieving and cleaning process.
+            A sample of the raw data is shown below.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- original data table -->
+        <div class="col-md-10">
+          <h3>Original Data</h3>
+          <table id="dirty-table" class="table table-bordered table-striped table-hover">
               <thead>
-                <tr>
-                  <th class="table-head">Date</th>
-                  <th class="table-head">City</th>
-                  <th class="table-head">State</th>
-                  <th class="table-head">Country</th>
-                  <th class="table-head">Shape</th>
-                  <th class="table-head">Duration</th>
-                  <th class="table-head">Comments</th>
+                <tr style="text-align: center;">
+                  <th>summary</th>
+                  <th>city</th>
+                  <th>state</th>
+                  <th>date_time</th>
+                  <th>shape</th>
+                  <th>duration</th>
+                  <th>stats</th>
+                  <th>report_link</th>
+                  <th>text</th>
+                  <th>posted</th>
+                  <th>city_latitude</th>
+                  <th>city_longitude</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <tr>
+                  <td>Three saucer shaped ships.  High in the sky, m...</td>
+                  <td>Salem</td>
+                  <td>OR</td>
+                  <td>NaN</td>
+                  <td>disk</td>
+                  <td>15 minutes</td>
+                  <td>Occurred : 8/15/1950 14:00  (Entered as : 08/1...</td>
+                  <td>http://www.nuforc.org/webreports/135/S135871.html</td>
+                  <td>Three saucer shaped ships.  High in the sky, m...</td>
+                  <td>NaN</td>
+                  <td>44.941247</td>
+                  <td>-123.004235</td>
+                </tr>
+                <tr>
+                  <td>Tear-drop shaped silent craft with sectional f...</td>
+                  <td>Ellsworth</td>
+                  <td>ME</td>
+                  <td>NaN</td>
+                  <td>teardrop</td>
+                  <td>5 minutes</td>
+                  <td>Occurred : 8/15/1967 21:30  (Entered as : 08/0...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132451.html</td>
+                  <td>Tear-drop shaped silent craft with sectional f...</td>
+                  <td>NaN</td>
+                  <td>44.651300</td>
+                  <td>-68.450700</td>
+                </tr>
+                <tr>
+                  <td>Green orb shot out of white light  ((NUFORC No...</td>
+                  <td>San Antonio</td>
+                  <td>TX</td>
+                  <td>2017-01-25T20:45:00</td>
+                  <td>light</td>
+                  <td>90 minutes</td>
+                  <td>Occurred : 1/25/2017 20:45  (Entered as : 01/2...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132305.html</td>
+                  <td>Green orb shot out of white light I saw a whit...</td>
+                  <td>2017-01-26T00:00:00</td>
+                  <td>29.488866</td>
+                  <td>-98.475240</td>
+                </tr>
+                <tr>
+                  <td>Saw three circular orange lights traveling sou...</td>
+                  <td>Port Saint Lucie</td>
+                  <td>FL</td>
+                  <td>2017-02-24T20:45:00</td>
+                  <td>circle</td>
+                  <td>5 minutes</td>
+                  <td>Occurred : 2/24/2017 20:45  (Entered as : 02/2...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132890.html</td>
+                  <td>Saw three circular orange lights traveling sou...</td>
+                  <td>2017-03-10T00:00:00</td>
+                  <td>27.285686</td>
+                  <td>-80.363444</td>
+                </tr>
+                <tr>
+                  <td>Light moving slowly thru the sky towards the W...</td>
+                  <td>Whitefish</td>
+                  <td>MT</td>
+                  <td>2017-02-22T21:00:00</td>
+                  <td>light</td>
+                  <td>15 minutes</td>
+                  <td>Occurred : 2/22/2017 21:00  (Entered as : 02/2...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132774.html</td>
+                  <td>Light moving slowly thru the sky towards the w...</td>
+                  <td>2017-03-10T00:00:00</td>
+                  <td>48.411100</td>
+                  <td>-114.337600</td>
+                </tr>
+                <tr>
+                  <td>Bright pulsating white light brighter than Ven...</td>
+                  <td>Swanville</td>
+                  <td>ME</td>
+                  <td>2017-02-22T19:30:00</td>
+                  <td>light</td>
+                  <td>45 minutes</td>
+                  <td>Occurred : 2/22/2017 19:30  (Entered as : 02/2...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132754.html</td>
+                  <td>Bright pulsating white light brighter than Ven...</td>
+                  <td>2017-02-22T00:00:00</td>
+                  <td>NaN</td>
+                  <td>NaN</td>
+                </tr>
+                <tr>
+                  <td>((HOAX??))  Loud boom heard.</td>
+                  <td>Duxbury</td>
+                  <td>MA</td>
+                  <td>2017-01-31T06:00:00</td>
+                  <td>unknown</td>
+                  <td>2</td>
+                  <td>Occurred : 1/31/2017 06:00  (Entered as : 01/3...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132401.html</td>
+                  <td>Loud boom heard. ((NUFORC Note:  Witness elect...</td>
+                  <td>2017-02-03T00:00:00</td>
+                  <td>42.049490</td>
+                  <td>-70.693082</td>
+                </tr>
+                <tr>
+                  <td>Two erratic bright white lights seen in Southe...</td>
+                  <td>Studio City</td>
+                  <td>CA</td>
+                  <td>2017-01-29T10:34:00</td>
+                  <td>light</td>
+                  <td>3 minutes</td>
+                  <td>Occurred : 1/29/2017 10:34  (Entered as : 01/2...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132369.html</td>
+                  <td>Two erratic bright white lights seen in Southe...</td>
+                  <td>2017-02-03T00:00:00</td>
+                  <td>34.138265</td>
+                  <td>-118.392057</td>
+                </tr>
+                <tr>
+                  <td>There was only one UFO.  It was yellow orange-...</td>
+                  <td>Hernando</td>
+                  <td>FL</td>
+                  <td>2017-01-25T22:45:00</td>
+                  <td>light</td>
+                  <td>1 minute</td>
+                  <td>Occurred : 1/25/2017 22:45  (Entered as : 1/25...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132302.html</td>
+                  <td>There was only one UFO.  It was yellow orange-...</td>
+                  <td>2017-02-03T00:00:00</td>
+                  <td>28.935600</td>
+                  <td>-82.389500</td>
+                </tr>
+                <tr>
+                  <td>Not the only time lights followed me.First tim...</td>
+                  <td>Mananlapan</td>
+                  <td>NJ</td>
+                  <td>2017-02-19T17:45:00</td>
+                  <td>light</td>
+                  <td>5hours 45 minutes</td>
+                  <td>Occurred : 2/19/2017 17:45  (Entered as : 2/19...</td>
+                  <td>http://www.nuforc.org/webreports/132/S132727.html</td>
+                  <td>Not the only time lights followed me.  First t...</td>
+                  <td>2017-02-22T00:00:00</td>
+                  <td>NaN</td>
+                  <td>NaN</td>
+                </tr>
+              </tbody>
             </table>
-          </div>
+        </div>
+      </div>
+      <!-- blurb about cleaning process -->
+      <div class="row">
+        <div class="col-md-10">
+          <h3>Data Cleaning Process</h3>
+          <p>After looking at the data, there were several fields that were not needed or repetitive. Some of these superfluous
+            fields included "report_link", "posted", and "text". Additionally, any records containing null values were then removed
+            in order to filter out less thorough reports. A "year" column was added to the dataframe by using the "split" function
+            to break down the provided datetime. This column was useful for sorting and other date-relevant controls on the display of data.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- clean data table -->
+        <div class="col-md-10">
+          <h3>Clean Data</h3>
+          <table id="clean-table" class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr style="text-align: center;">
+                  <th>index</th>
+                  <th>summary</th>
+                  <th>city</th>
+                  <th>state</th>
+                  <th>date_time</th>
+                  <th>shape</th>
+                  <th>duration</th>
+                  <th>stats</th>
+                  <th>city_latitude</th>
+                  <th>city_longitude</th>
+                  <th>year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>4344</td>
+                  <td>1 And 2 And 3 Cloud Type Objects Immediately A...</td>
+                  <td>Naples</td>
+                  <td>Fl</td>
+                  <td>1969-01-04T23:30:00</td>
+                  <td>oval</td>
+                  <td>???</td>
+                  <td>Occurred : 1/4/1969 23:30  (Entered as : 1/4/6...</td>
+                  <td>26.193182</td>
+                  <td>-81.737030</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>31679</td>
+                  <td>While Observing Venus Through Telescopes, My F...</td>
+                  <td>Perth Amboy</td>
+                  <td>Nj</td>
+                  <td>1969-03-01T21:00:00</td>
+                  <td>light</td>
+                  <td>2 Minutes</td>
+                  <td>Occurred : 3/1/1969 21:00  (Entered as : 03/01...</td>
+                  <td>40.519246</td>
+                  <td>-74.273754</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>33103</td>
+                  <td>Orange Cigar Shaped Object Drops Something Tha...</td>
+                  <td>Fulton</td>
+                  <td>Ny</td>
+                  <td>1969-10-30T21:00:00</td>
+                  <td>cigar</td>
+                  <td>4 Minutes</td>
+                  <td>Occurred : 10/30/1969 21:00  (Entered as : 10/...</td>
+                  <td>43.348000</td>
+                  <td>-76.342200</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>64789</td>
+                  <td>Space Ship Hovered With Colored Lights Going A...</td>
+                  <td>Altoona</td>
+                  <td>Pa</td>
+                  <td>1969-06-15T19:00:00</td>
+                  <td>other</td>
+                  <td>10 Minutes</td>
+                  <td>Occurred : 6/15/1969 19:00  (Entered as : 06/1...</td>
+                  <td>40.536110</td>
+                  <td>-78.397277</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>21301</td>
+                  <td>Flying Disk Over Northern Peoria, Illinois</td>
+                  <td>Peoria</td>
+                  <td>Il</td>
+                  <td>1969-07-15T14:00:00</td>
+                  <td>disk</td>
+                  <td>One Minute</td>
+                  <td>Occurred : 7/15/1969 14:00  (Entered as : summ...</td>
+                  <td>40.732397</td>
+                  <td>-89.614645</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>92891</td>
+                  <td>Asd Missouri Mufon Reporting For Witness Re:  ...</td>
+                  <td>Independence</td>
+                  <td>Mo</td>
+                  <td>1969-08-01T03:00:00</td>
+                  <td>sphere</td>
+                  <td>2 Hours</td>
+                  <td>Occurred : 8/1/1969 03:00  (Entered as : 08/19...</td>
+                  <td>39.078808</td>
+                  <td>-94.386086</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>23661</td>
+                  <td>Two Fast And Low Disks Haulin' A**</td>
+                  <td>Sunnyvale</td>
+                  <td>Ca</td>
+                  <td>1969-07-04T11:15:00</td>
+                  <td>disk</td>
+                  <td>5-10 Sec.</td>
+                  <td>Occurred : 7/4/1969 11:15  (Entered as : 07/04...</td>
+                  <td>37.379397</td>
+                  <td>-122.021478</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>72114</td>
+                  <td>2 Unknown Objects, Moving @ Incredible Speed P...</td>
+                  <td>Enid</td>
+                  <td>Ok</td>
+                  <td>1969-07-15T02:00:00</td>
+                  <td>unknown</td>
+                  <td>10 Minutes</td>
+                  <td>Occurred : 7/15/1969 02:00  (Entered as : 07/1...</td>
+                  <td>36.416915</td>
+                  <td>-97.888151</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>48609</td>
+                  <td>((Hoax??))  Shiny Light And Elecromagnetic Ene...</td>
+                  <td>Barrington</td>
+                  <td>Il</td>
+                  <td>1969-06-01T12:09:00</td>
+                  <td>sphere</td>
+                  <td>2 Hours</td>
+                  <td>Occurred : 6/1/1969 12:09  (Entered as : 1969 ...</td>
+                  <td>42.158400</td>
+                  <td>-88.159200</td>
+                  <td>1969</td>
+                </tr>
+                <tr>
+                  <td>7102</td>
+                  <td>In The Summer Of 1969 Living In Starlight Esta...</td>
+                  <td>Whittier</td>
+                  <td>Ca</td>
+                  <td>1969-07-01T18:00:00</td>
+                  <td>disk</td>
+                  <td>7 Minutes</td>
+                  <td>Occurred : 7/1/1969 18:00  (Entered as : 7/69 ...</td>
+                  <td>33.963016</td>
+                  <td>-118.028133</td>
+                  <td>1969</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
       </div>
     </div>
+    <!-- Create a graph of the data ?? -->
+    <div class="container">
+
+    </div>
+    <!-- footer -->
     <footer class="footer">
       <span class="bottom">UFO Sightings</span>
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-  <script src="static/js/data.js"></script>
-  <script src="static/js/app.js"></script>
+
 </body>
 
 </html>
