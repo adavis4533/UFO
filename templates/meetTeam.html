@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta charset="UTF-8">
-  <title>UFO Sightings Troubleshooting</title>
+  <title>UFO Sightings Visualization</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/css/web.css">
   
@@ -11,9 +12,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+<style>
+
+</style>
 </head>
 <body>
-  <!-- navbar -->
+
+
+<!-- Navbar -->
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="../templates/index2.html"></a>
 	<img src="../static/images/saucer2.png" height="30" alt="mdb logo">
@@ -38,7 +46,7 @@
             Learn More
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			<a class="dropdown-item" href="../tempaltes/meetTeam.html">Meet the Team</a>
+			<a class="dropdown-item" href="../templates/meetTeam.html">Meet the Team</a>
             <a class="dropdown-item" href="../templates/data.html">Data</a>
             <a class="dropdown-item" href="../templates/index.html">GeoMapping</a>
             <div class="dropdown-divider"></div>
@@ -60,57 +68,104 @@
     </div>
   </nav>
 
-  <!-- head of page -->
-    <div class="hero text-center">
-      <h1 class="text-center">UFO Sightings Troubleshooting</h1>
-    </div>
-    <div class="container">
-        <!-- troubleshooting text -->
-        <div class="row">
-            <div class="col-md-8">
-			<h3>Our Process</h3>
-              <p>As with most projects, there are a lot of unforseen issues that come along. Here is a brief glimpse into
-                some of the issues and solutions utilized. 
-              </p>
-              <h3>Data Extraction/Cleaning</h3>
-              <ul>
-                <li>Data provided was large csv or json file with over 100k records dating back to 1969</li>
-                <li>Direct import into mongo did not work properly due to long character strings in the "summary" section of data</li>
-                <li>CSV could not be shared on Git because it was too large, so more practical to use provided API in jupyter notebook</li>
-                <li>Initially connected jupyter to mongo to import clean data</li>
-              </ul>
 
-              <h3>Data Visualization/Mapping</h3>
-              <ul>
-                <li>Creating flask app connecting to mongo unsuccessful (we think due to the number of records)</li>
-                <li>Extracting from mongo did not provide a usable json in javascript</li>
-                <li>Ended up using "to_json" in jupyter and using that json for map</li>
-                <li>Additional difficulties getting d3 to do what we wanted it to do in the map</li>
-              </ul>
 
-              <h3>Rendering Our Project</h3>
-              <ul>
-                  <li>When moving files from each computer into the repository, took time/effort to get arrangement/file paths correct</li>
-                  <li>Initially tried to launch the homepage using Flask, but map would not render</li>
-                  <li>Decided to stick to python server to ensure map functionality opposed to using flask</li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <img padding: 20px src="../static/images/motel-ufo.jpg" alt="galaxy">
-            </div>
-        </div>
-    </div>
+
+<h1 class="text-center">Meet the Team!</h1>
+
+<div class="card" style="width: 18rem;" text="Alexis Summey">
+  <img src="../static/images/alexislinkedin.png" class="card-img-top" alt="Alexis">
+  <div class="card-body">
+    <h1 class="text-center">Alexis Summey</h1>
+	<p class="text-center">Web Developer</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../static/images/Andrew2.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h1 class="text-center">Andrew Davis</h1>
+	<p class="text-center">Data Analyst</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../static/images/Ellen2.png" class="card-img-top" alt="Ellen">
+  <div class="card-body">
+    <h1 class="text-center">Ellen Colborn</h1>
+	<p class="text-center">ETL SME</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../static/images/Timisha2.png" class="card-img-top" alt="Ellen">
+  <div class="card-body">
+    <h1 class="text-center">Timisha Martin</h1>
+	<p class="text-center">Web Developer</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../static/images/Scott2.png" class="card-img-top" alt="Ellen">
+  <div class="card-body">
+    <h1 class="text-center">Scott Caldwell</h1>
+	<p class="text-center">Data Analyst</p>
+  </div>
+</div>
 
 <!--
-  <div class="container">
-    <div class="jumbotron">
-      <h1 class="display-4">Jumbotron!</h1>
-      <p class="lead">This is placed inside a container</p>
-      <hr class="my-4">
-      <p>Here we can display some more text!</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div class="column">
+  <div class="column">
+    <div class="card">
+      <img src= "../static/images/Alexis.jpg"alt="Alexis" style="width:39%">
+      <div class="container">
+        <h2>Alexis Summey</h2>
+        <p class="title">Web Developer</p>
+		
+      </div>
     </div>
   </div>
--->
+
+ <div class="column">
+	<div class="card">
+		<img src= "../static/images/Andrew.jpg" style="width:50%">
+		<div class="container">
+        <h2>Andrew Davis</h2>
+        <p class="title">Data Analyst</p>
+      
+	  </div>
+    </div>
+  </div>
+ 
+   <div class="column">
+	<div class="card">
+		<img src= "../static/images/Ellen.jpg" style="width:50%">
+		<div class="container">
+        <h2>Ellen Colborn </h2>
+        <p class="title">ETL SME</p>
+      
+	  </div>
+    </div>
+  </div>
+  
+<div class="column">
+	<div class="card">
+		<img src= "../static/images/Timisha.png" style="width:50%">
+		<div class="container">
+        <h2>Timisha Martin </h2>
+        <p class="title">Web Developer</p>
+      
+	  </div>
+    </div>
+  </div>
+  
+  <div class="column">
+	<div class="card">
+		<img src= "../static/images/scott.png" style="width:65%">
+		<div class="container">
+        <h2>Scott Caldwell </h2>
+        <p class="title">Data Analyst</p>
+      
+	  </div>
+    </div>
+  </div>
+
 </body>
 </html>
+-->
