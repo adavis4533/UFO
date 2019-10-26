@@ -11,59 +11,65 @@
 // Creating map object
 var myMap = L.map("map", {
   center: [39.2390, -97.7688],
-  zoom: 11,
+  zoom: 4,
   layers: [lightmap]
 });
 
 lightmap.addTo(myMap);
 
-var marker = L.marker([50.5, 30.5], {
-  draggable: true,
-  title: "My First Marker"
-}).addTo(myMap);
 
-// Binding a pop-up to our marker
-marker.bindPopup("Hello There!");
-
-/*var markers = L.markerClusterGroup();
-markers.addLayer(L.marker(getRandomLatLng(myMap)));
-//... Add more layers ...//
-myMap.addLayer(markers);
-*/
-
-
-//load data
+var SaucerIcon = L.Icon.extend({
+    options: {
+        shadowUrl: '../static/images/shadow3.png',
+        iconSize:     [50, 95],
+        shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+    }
+});
+var ufoIcon = new SaucerIcon({iconUrl: '../static/images/saucer2.png'});
 
 
-d3.json("data.json", function(ufoData) {
+
+//Load Data
+d3.json('data.json').then(function(data) {
   
-    console.log(ufoData);
+  //Create markers
+  var markers = L.markerClusterGroup();
+
+  //for loop to get number of objects 
+  for (var i = 0; i < data.data.length; i++) {
+
+    // Set the data location property to a variable
+    var location = data.data[i];
+    
+    // Check for location property
+    if (location) {
+
+      // Add a new marker to the cluster group and bind a pop-up
+      markers.addLayer(L.marker([location.city_latitude, location.city_longitude], {icon: ufoIcon})
+        .bindPopup(data.data[i].summary));
+       
+    }
+
+  }
+  myMap.addLayer(markers);
+});
+
+
+// var count = Object.values('data.json').length;
+//   console.log(count);  
 
     // log a list of names
   
-});
+
 
     // Log an error if one exists
-   /* 
-    });
-
-    for (var i = 0; i < ufoData.location; i++) {
-
-      // Set the data location property to a variable
-      var location = ufoData[i].location;
-  
-      // Check for location property
-      if (location) {
-  
-        // Add a new marker to the cluster group and bind a pop-up
-        markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-          .bindPopup(response[i].descriptor));
-      }
-  
-    }
+   
+    
   
     // Add our marker cluster layer to the map
-    myMap.addLayer(markers);
   
-  });
- */ 
+
+ 
